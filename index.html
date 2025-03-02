@@ -1,10 +1,28 @@
-<!doctype html>
-    <head>
-        <title>Dice game</title>
-        <script src="server.js"></script>
-    </head>
-    <body>
-        <button type="button" onclick="rollDice()">Roll Dice</button><br><br>
-        Six Sided Dice: <input id="dice" type="text" value="" size="5" disabled><br><br>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+</head>
+<body>
+    <h1>Dice Roller</h1>
+    <button type="button" onclick="rollDice()">Roll Dice</button><br><br>
+    Six Sided Dice: <input id="dice" type="text" value="" size="5" disabled><br><br>
+
+    <script>
+        function rollDice() {
+            // Make a GET request to the server to roll the dice
+            fetch('/roll')
+                .then(response => response.json())  // Parse the JSON response
+                .then(data => {
+                    // Update the dice input with the result from the server
+                    document.getElementById("dice").value = data.result;
+                })
+                .catch(error => {
+                    console.error("Error rolling the dice:", error);
+                });
+        }
+    </script>
+</body>
 </html>
