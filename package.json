@@ -1,0 +1,11 @@
+{
+    "name": "app-service-dice-game",
+    "description": "Simple Dice Game",
+    "version": "0.0.1",
+    "private": true,
+    "license": "MIT",
+    "author": "Microsoft",
+    "scripts": {
+        "start": "node index.js"
+    }
+}
